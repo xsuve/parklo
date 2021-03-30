@@ -1,1 +1,280 @@
+/* General */
+ion-content {
+  --overflow: hidden;
+  position: relative;
+}
 
+/* Overlay */
+.map-overlay {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+.map {
+  height: 100%;
+  width: 100%;
+}
+.map-overlay-menu {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  z-index: 9997;
+  position: absolute;
+  top: 20px;
+  right: 0px;
+  left: 0px;
+}
+.map-overlay-menu:after {
+  content: '';
+  top: -20px;
+  background-color: #fff;
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+}
+.menu-logo {
+  font-family: 'Museo';
+  font-size: 26px;
+  line-height: 22px;
+  color: #2c3e50;
+}
+.menu-btn {
+  font-size: 24px;
+  line-height: 24px;
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+/* Search */
+.map-overlay-search {
+  background-color: #fff;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 25px 30px 20px 30px;
+  position: fixed;
+  width: 100%;
+  height: 70vh;
+  bottom: calc(-70vh + 85px);
+  left: 0px;
+  right: 0px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.map-overlay-search .map-overlay-search-wrapper {
+  position: relative;
+}
+.map-overlay-search .map-overlay-search-wrapper ion-input {
+  --padding-top: 10px;
+  --padding-end: 0px;
+  --padding-bottom: 10px;
+  --padding-start: 0px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color: #2c3e50;
+  font-size: 13px;
+  line-height: 23px;
+  letter-spacing: 0.3px;
+}
+.map-overlay-search .map-overlay-search-wrapper ion-icon {
+  position: absolute;
+  right: 0px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #ddd;
+  cursor: pointer;
+  z-index: 9998;
+}
+.map-overlay-search-button {
+  height: 25px;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  cursor: pointer;
+}
+.map-overlay-search-button:after {
+  height: 2px;
+  width: 30px;
+  background-color: #ddd;
+  position: absolute;
+  content: '';
+  top: 10px;
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  border-radius: 3px;
+}
+
+/* Side Menu */
+.side-menu {
+  width: 80%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 9997;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: -80%;
+  box-shadow: inset -10px 0 10px -5px rgba(0, 0, 0, 0.1);
+  padding: 100px 20px;
+}
+.side-menu-account-image {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+}
+.side-menu-account-image img {
+  max-width: 100%;
+}
+.side-menu-account-name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 16px;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.side-menu-account-email {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color: #aeaeae;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.3px;
+}
+
+.form-complete-profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 50px auto 20px auto;
+}
+.form-complete-profile-image img {
+  max-width: 100%;
+}
+
+/* Bottom Menu */
+.bottom-menu-section-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: #bbb;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+.bottom-menu-favorite {
+  padding: 5px 0px;
+  cursor: pointer;
+}
+.bottom-menu-favorite ion-icon {
+  color: #4e86ee;
+  font-size: 22px;
+  line-height: 22px;
+  display: block;
+}
+.bottom-menu-favorite-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  color: #2c3e50;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+.bottom-menu-favorite-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  color: #aeaeae;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.3px;
+}
+
+// Choose Parking Time
+.choose-parking-time {
+  margin-top: 100px;
+}
+.choose-parking-time div, .choose-parking-time span {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'Raleway', sans-serif;
+  color: #999;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 54px;
+  letter-spacing: 0.3px;
+}
+.choose-parking-time div {
+  cursor: pointer;
+  position: relative;
+}
+.choose-parking-time div:after {
+  position: absolute;
+  bottom: -25px;
+  font-family: 'Raleway', sans-serif;
+  color: #999;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  left: 0px;
+  right: 0px;
+  margin: 0px auto;
+}
+.choose-parking-time div.hours:after {
+  content: 'hrs';
+}
+.choose-parking-time div.minutes:after {
+  content: 'mins';
+}
+.choose-parking-time div.selected {
+  color: #2c3e50;
+}
+.choose-parking-time span {
+  padding: 0px 1px;
+}
+.choose-parking-time ion-icon {
+  display: inline-block;
+  vertical-align: middle;
+  color: #4e86ee;
+  font-size: 34px;
+  line-height: 34px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.choose-parking-time ion-icon:first-of-type {
+  margin-right: 30px;
+}
+.choose-parking-time ion-icon:last-of-type {
+  margin-left: 30px;
+}
+.choose-parking-btn {
+  margin-top: 150px;
+}
+
+.add-parking-spot-btn {
+  width: 48px;
+  height: 48px;
+  background-color: #4e86ee;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: -65px;
+  right: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.add-parking-spot-btn ion-icon {
+  font-size: 24px;
+  line-height: 24px;
+  margin: 0px auto;
+}

@@ -1,14 +1,233 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <!-- Lightboxes -->
+  <!-- Get Started -->
+  <div class="lightbox" *ngIf="getStartedOnboarding == true">
+    <ion-slides pager="true" [options]="lightboxSlideOptions">
+      <ion-slide>
+        <div class="ion-text-center">
+          <div class="lightbox-image">
+            <img src="../assets/img/get-started-1.svg">
+          </div>
+          <div class="lightbox-title">Get the right directions to the parking spots</div>
+          <div class="lightbox-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="ion-text-center">
+          <div class="lightbox-image">
+            <img src="../assets/img/get-started-2.svg">
+          </div>
+          <div class="lightbox-title">Stop wasting time finding available parking</div>
+          <div class="lightbox-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="ion-text-center">
+          <div class="lightbox-image">
+            <img src="../assets/img/get-started-3.svg">
+          </div>
+          <div class="lightbox-title">All the parking spots, right on your map</div>
+          <div class="lightbox-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+          <div class="lightbox-btn">
+            <button class="btn btn-blue" type="button" (click)="completeProfileFunction();">Complete Profile</button>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!-- Complete Profile -->
+  <div class="lightbox" *ngIf="completeProfile == true">
+    <div class="lightbox-form">
+      <div class="form-title">Complete your profile to <span>get started.</span></div>
+
+      <form class="form" [formGroup]="validations_form" (ngSubmit)="submitCompleteProfile(validations_form.value);">
+        <div class="form-complete-profile-image" (click)="chooseProfileImage();">
+          <img [src]="profileImagePlaceholder">
+        </div>
+        <ion-item>
+          <ion-label position="floating" class="form-input-label">Full Name</ion-label>
+          <ion-input type="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div class="form-validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.name">
+            <div class="error-message" *ngIf="validations_form.get('name').hasError(validation.type) && (validations_form.get('name').dirty || validations_form.get('name').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-btn ion-text-right">
+          <button class="btn btn-blue" type="submit" [disabled]="!validations_form.valid"><ion-spinner name="crescent" *ngIf="completeProfileSpinner"></ion-spinner><span>Get Started</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Parking Spot -->
+  <div class="lightbox" *ngIf="addParkingSpotOnboarding == true">
+    <ion-slides pager="true" [options]="lightboxSlideOptions">
+      <ion-slide>
+        <div class="ion-text-center">
+          <div class="lightbox-image">
+            <img src="../assets/img/add-parking-spot-1.svg">
+          </div>
+          <div class="lightbox-title">Make sure you're right on the parking spot</div>
+          <div class="lightbox-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="ion-text-center">
+          <div class="lightbox-image">
+            <img src="../assets/img/add-parking-spot-2.svg">
+          </div>
+          <div class="lightbox-title">Drag the map pin to the parking spot location</div>
+          <div class="lightbox-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</div>
+          <div class="lightbox-btn">
+            <button class="btn btn-blue" type="button" (click)="closeAddParkingSpotOnboarding();">Add Parking Spot</button>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="lightbox" *ngIf="parkingSpotChooseTime == true">
+    <div class="lightbox-close" (click)="cancelAddParkingSpot();">
+      <ion-icon name="close"></ion-icon>
+    </div>
+    <div class="lightbox-form">
+      <div class="form-title"><span>Parking time</span></div>
+      <div class="form-title">How long will this parking spot be busy?</div>
+      <div class="choose-parking-time ion-text-center">
+        <ion-icon name="remove-circle" (click)="decreaseParkingTime();"></ion-icon>
+        <div class="hours" [ngClass]="{'selected': parkingTimeSelected == 0}" (click)="selectParkingTime(0);">{{ parkingTimeHours <= 9 ? 0 : null }}{{ parkingTimeHours }}</div><span>:</span><div class="minutes" [ngClass]="{'selected': parkingTimeSelected == 1}" (click)="selectParkingTime(1);">{{ parkingTimeMinutes <= 9 ? 0 : null }}{{ parkingTimeMinutes }}</div>
+        <ion-icon name="add-circle" (click)="increaseParkingTime();"></ion-icon>
+      </div>
+      <div class="choose-parking-btn ion-text-center">
+        <button class="btn btn-blue" type="button" [disabled]="parkingTimeHours == 0 && parkingTimeMinutes == 0" (click)="submitAddParkingSpot();"><ion-spinner name="crescent" *ngIf="addParkingSpotSpinner"></ion-spinner><span>Add Parking Spot</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side Menu -->
+  <div class="side-menu">
+    <div class="side-menu-account">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+            <div class="side-menu-account-image">
+              <img src="{{ currentUserPhotoURL }}">
+            </div>
+          </ion-col>
+          <ion-col size="9">
+            <div class="vm">
+              <div class="side-menu-account-name">{{ currentUser.displayName }}</div>
+              <div class="side-menu-account-email">{{ currentUser.email }}</div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="side-menu-link">
+        <a href="#">
+          <!--  -->
+        </a>
+      </div>
+      <div class="form-btn">
+        <button class="btn btn-blue" type="button" (click)="logout();">Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map Overlay -->
+  <div class="map-overlay">
+    <div #mapElement class="map"></div>
+
+    <!-- Overlay Top -->
+    <div class="map-overlay-menu">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2" class="ion-text-left">
+            <div class="menu-btn" (click)="toggleSideMenu();">
+              <ion-icon name="{{ sideMenuBtnIcon }}"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col size="8" class="ion-text-center">
+            <div class="menu-logo">parklo</div>
+          </ion-col>
+          <ion-col size="2" class="ion-text-right">
+            <div class="menu-btn" (click)="centerMapCurrentLocation();">
+              <ion-icon name="locate" ios="md-locate"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- Overlay Search -->
+    <div class="map-overlay-search" [style.position]="searchInputPosition">
+      <div class="add-parking-spot-btn" (click)="openAddParkingSpot();">
+        <ion-icon name="add-circle" class="vm"></ion-icon>
+      </div>
+
+      <div class="map-overlay-search-button" (click)="toggleBottomMenu();"></div>
+      <div class="map-overlay-search-wrapper">
+        <ion-input placeholder="Search Parking by Location" (ionFocus)="searchInputFocus();" (ionBlur)="searchInputBlur();"></ion-input>
+        <ion-icon name="{{ searchInputIcon }}" class="vm" (click)="hideSearchKeyboard();"></ion-icon>
+      </div>
+      <div class="line-divider"></div>
+      <div class="bottom-menu-section">
+        <div class="bottom-menu-section-title">FAVORITE</div>
+        <div class="bottom-menu-favorite">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2" class="ion-text-left">
+                <div class="vm">
+                  <ion-icon name="home"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col size="10" class="ion-text-left">
+                <div class="vm">
+                  <div class="bottom-menu-favorite-title">Home</div>
+                  <div class="bottom-menu-favorite-text">Stejarului, 24 B, Sibiu</div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="bottom-menu-favorite">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2" class="ion-text-left">
+                <div class="vm">
+                  <ion-icon name="school"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col size="10" class="ion-text-left">
+                <div class="vm">
+                  <div class="bottom-menu-favorite-title">University</div>
+                  <div class="bottom-menu-favorite-text">Emil Cioran, 23 B, Sibiu</div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <div class="bottom-menu-favorite">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="2" class="ion-text-left">
+                <div class="vm">
+                  <ion-icon name="add-circle"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col size="10" class="ion-text-left">
+                <div class="vm">
+                  <div class="bottom-menu-favorite-title">Add new favorite</div>
+                  <div class="bottom-menu-favorite-text">Set a new favorite parking location</div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

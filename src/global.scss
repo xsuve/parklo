@@ -24,3 +24,213 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/*
+
+  Colors
+
+*/
+// Green: #6bd197
+// Blue: #4e86ee
+// Red: #e74c3c
+// Yellow: #f1c40f
+
+/*
+
+  Custom
+
+*/
+
+/* General */
+.scroll-content {
+  padding-bottom: 0 !important;
+}
+
+/* Alignment */
+.vm {
+  position: relative;
+  display: block;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Buttons */
+.btn {
+  font-family: 'Raleway', sans-serif;
+  padding: 15px 20px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.3px;
+  border-radius: 30px;
+}
+.btn ion-spinner {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+.btn span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.btn.btn-blue {
+  color: #fff;
+  background-color: #4e86ee;
+  border: 1px solid #4e86ee;
+}
+.btn.btn-blue ion-spinner {
+  --color: #fff;
+}
+.btn.btn-blue-outline {
+  color: #4e86ee;
+  background-color: #fff;
+}
+
+/* Forms */
+.form-logo {
+  font-family: 'Museo';
+  font-size: 28px;
+  line-height: 24px;
+  color: #2c3e50;
+  margin-bottom: 50px;
+}
+.form-title {
+  font-family: 'Raleway', sans-serif;
+  color: #999;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 34px;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+.form-title span {
+  display: block;
+  color: #2c3e50;
+}
+.form-input-label {
+  color: #999;
+}
+.form-btn {
+  margin-top: 50px;
+}
+ion-item {
+  --color: #2c3e50;
+  --highlight-height: 1px;
+  --highlight-color-focused: #4e86ee;
+  --highlight-color-valid: #6bd197;
+  --highlight-color-invalid: #e74c3c;
+  --border-color: #ddd;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --background-focused: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+}
+.form-validation-errors {
+  font-family: 'Raleway', sans-serif;
+  color: #e74c3c;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 23px;
+  letter-spacing: 0.3px;
+  margin-top: 5px;
+}
+.form-text {
+  font-family: 'Raleway', sans-serif;
+  color: #999;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  margin-top: 50px;
+}
+
+/* Alerts */
+.alert {
+  padding: 15px 20px;
+  border-radius: 10px;
+  width: 90%;
+  position: fixed;
+  bottom: 15px;
+  margin: 0px auto;
+  left: 0px;
+  right: 0px;
+  color: #fff;
+  z-index: 9999;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 23px;
+}
+.alert.alert-error {
+  background-color: #e74c3c;
+}
+.alert.alert-success {
+  background-color: #6bd197;
+}
+
+/* Line Divider */
+.line-divider {
+  height: 1px;
+  background-color: #ddd;
+  width: 100%;
+  margin: 20px auto;
+}
+
+/* Lightbox */
+.lightbox {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #fff;
+  z-index: 9999;
+}
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+.lightbox-close ion-icon {
+  font-size: 34px;
+  line-height: 34px;
+  color: #999;
+}
+.lightbox ion-slides {
+  width: 100%;
+  height: 100%;
+}
+.lightbox-image {
+  width: 70%;
+  margin: 0px auto 30px auto;
+}
+.lightbox-title {
+  font-family: 'Raleway', sans-serif;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.5px;
+  padding: 0px 50px;
+}
+.lightbox-text {
+  font-family: 'Raleway', sans-serif;
+  color: #999;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  margin-top: 15px;
+  padding: 0px 50px;
+}
+.lightbox-btn {
+  margin-top: 50px;
+}
+.lightbox-form {
+  padding-top: 150px;
+  padding-right: 50px;
+  padding-bottom: 150px;
+  padding-left: 50px;
+}

@@ -3,9 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: "",
+    authDomain: "parklo.firebaseapp.com",
+    databaseURL: "https://parklo.firebaseio.com",
+    projectId: "parklo",
+    storageBucket: "parklo.appspot.com",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
+  }
 };
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

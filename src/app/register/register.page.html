@@ -1,0 +1,44 @@
+<ion-content>
+  <div class="form-logo">parklo</div>
+
+  <div class="form-title"><span>Glad you're here, </span>sign up for an account.</div>
+
+  <form class="form" [formGroup]="validations_form" (ngSubmit)="tryRegister(validations_form.value);">
+    <ion-item>
+      <ion-label position="floating" class="form-input-label">Email</ion-label>
+      <ion-input type="text" formControlName="email"></ion-input>
+    </ion-item>
+    <div class="form-validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="error-message" *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-label position="floating" class="form-input-label">Password</ion-label>
+      <ion-input type="password" formControlName="password" required></ion-input>
+    </ion-item>
+    <div class="form-validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <div class="form-btn ion-text-right">
+      <button class="btn btn-blue" type="submit" [disabled]="!validations_form.valid"><ion-spinner name="crescent" *ngIf="registerSpinner"></ion-spinner><span>Create Account</span></button>
+    </div>
+  </form>
+  <div class="form-text ion-text-center">
+    Have an account? <a (click)="goToLoginPage();">Log into account</a>
+  </div>
+
+  <div class="alert alert-success" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div class="alert alert-error" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</ion-content>

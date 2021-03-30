@@ -1,5 +1,7 @@
 {
-  "name": "parko",
-  "integrations": {},
+  "name": "parklo",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
