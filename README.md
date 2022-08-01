@@ -1,4 +1,4 @@
-![parklo - Community Parking Spot Sharing Mobile App](https://xsuve.com/portfolio/parklo/header.png)
+![parklo - Community Parking Spot Sharing Mobile App](screenshot.png)
 
 `2019 Series`
 # parklo - Community Parking Spot Sharing Mobile App
